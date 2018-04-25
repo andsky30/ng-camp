@@ -20,3 +20,10 @@
   width: 200px;
   height: 30px;
 }
+
+.validation-div
+{
+  display: block;
+  color: red;
+  margin-bottom: 15px;
+}
