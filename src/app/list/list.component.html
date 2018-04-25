@@ -1,0 +1,24 @@
+<div class="table-container">
+  <table class="campaign-table">
+    <thead>
+      <th>NAME</th>
+      <th>KEYWORDS</th>
+      <th>BID AMOUNT</th>
+      <th>FUND</th>
+      <th>STATUS</th>
+      <th>TOWN</th>
+      <th>RADIUS</th>
+    </thead>
+    <tbody *ngFor="let campaign of campaigns">
+      <tr>
+        <td>{{campaign.name}}</td>
+        <td>{{campaign.keywords}}</td>
+        <td>{{campaign.bidAmount}}</td>
+        <td>{{campaign.fund}}</td>
+        <td>{{campaign.status}}</td>
+        <td>{{campaign.town}}</td>
+        <td>{{campaign.radius}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

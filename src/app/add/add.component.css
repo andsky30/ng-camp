@@ -1,0 +1,22 @@
+.add_form_container
+{
+  padding-left: 30px;
+}
+
+.add_input, .add_select
+{
+  display: block;
+  width: 200px;
+  height: 25px;
+  margin-bottom: 10px;
+}
+
+.add_campaign_label
+{
+
+}
+
+.add_btn {
+  width: 200px;
+  height: 30px;
+}

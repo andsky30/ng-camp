@@ -1,0 +1,27 @@
+<div class="add_form_container">
+  <h2>Add new campaign</h2>
+  <form>
+    <label class="add_campaign_label">Name:</label>
+    <input type="text" class="add_input" placeholder="Name" [(ngModel)]="campaign.name" name="name"/>
+    <label class="add_campaign_label">Keywords:</label>
+    <input type="text" class="add_input" placeholder="Keywords" [(ngModel)]="campaign.keywords[0]" name="keywords[0]"/>
+    <label class="add_campaign_label">Minimal bid amount:</label>
+    <input type="text" class="add_input" placeholder="Min. bid amount" [(ngModel)]="campaign.bidAmount" name="bidAmount"/>
+    <label class="add_campaign_label">Fund:</label>
+    <input type="text" class="add_input" placeholder="Fund" [(ngModel)]="campaign.fund" name="fund"/>
+    <label class="add_campaign_label">Status:</label>
+    <select class="add_select" [(ngModel)]="campaign.status" name="status">
+      <option value="" disabled selected>Select status</option>
+      <option>on</option>
+      <option>off</option>
+    </select>
+    <label class="add_campaign_label">Town:</label>
+    <select class="add_select" [(ngModel)]="campaign.town" name="town">
+      <option value="" disabled selected>Select town</option>
+      <option *ngFor="let town of towns">{{town}}</option>
+    </select>
+    <label class="add_campaign_label">Radius in km:</label>
+    <input type="text" class="add_input" placeholder="Radius" [(ngModel)]="campaign.radius" name="radius"/>
+    <input type="submit" class="add_btn" value="Add campaign" (click)="addCampaign(campaign)"/>
+  </form>
+</div>
