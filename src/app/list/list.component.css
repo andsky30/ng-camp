@@ -1,5 +1,56 @@
+.table-container
+{
+  display: inline-block;
+  width: 1000px;
+  margin: 0;
+  vertical-align: top;
+}
+
 .campaign-table
 {
-  width: 1100px;
+  width: 100%;
   text-align: left;
+}
+
+.campaign-table th
+{
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.add_form_container
+{
+  padding-left: 30px;
+}
+
+.add_input, .add_select
+{
+  display: block;
+  width: 200px;
+  height: 25px;
+  margin-bottom: 10px;
+}
+
+.add_campaign_label
+{
+
+}
+
+.add_btn {
+  display: block;
+  width: 200px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.edit_container
+{
+  margin-left: 100px;
+  width: 300px;
+  display: inline-block;
+}
+
+.odd
+{
+  background-color: whitesmoke;
 }

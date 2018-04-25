@@ -1,0 +1,25 @@
+.main_menu
+{
+  padding-top: 10px;
+  font-size: 140%;
+  height: 40px;
+  border-bottom: 1px solid black;
+}
+
+.main_menu li
+{
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.main_menu li a
+{
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.main_menu li a:hover
+{
+  color: #f66800;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CampaignDataService } from '../campaign-data.service';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Rx';
 import {Router} from "@angular/router";
 
 @Component({
@@ -33,11 +33,12 @@ export class AddComponent implements OnInit {
     this._service.addCampaign(this.campaign).subscribe(
       res => {
         alert("Added successfully!");
-        this.router.navigate(['/']);
+        this.router.navigate(['/list']);
         return true;
       },
       error => {
         console.error("Error while saving campaign!");
+        return Observable.throw(error);
       }
     )
   }
