@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CampaignDataService} from "./campaign-data.service";
 
 @Component({
@@ -7,6 +7,21 @@ import {CampaignDataService} from "./campaign-data.service";
   styleUrls: ['./app.component.css'],
   providers: [CampaignDataService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
+
+  constructor(private _service: CampaignDataService) {
+  }
+
+  private accountBalance: string;
+
+  ngOnInit() {
+    this.getAccountBalance();
+  }
+
+  getAccountBalance(){
+    this._service.getAccountBalance().subscribe(
+      res => this.accountBalance = res.toString()
+    )
+  }
 }

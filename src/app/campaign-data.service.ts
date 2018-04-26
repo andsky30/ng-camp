@@ -38,10 +38,7 @@ export class CampaignDataService {
     return this.http.get('http://localhost:9000/api/campaign_towns');
   }
 
-
-
-
-
-
-
+  getAccountBalance(){
+    return this.http.get('http://localhost:9000/api/account_balance');
+  }
 }

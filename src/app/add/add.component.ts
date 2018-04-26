@@ -3,6 +3,7 @@ import {CampaignDataService} from '../campaign-data.service';
 import {Observable} from 'rxjs/Rx';
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, FormsModule, Validators} from '@angular/forms';
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-add',
@@ -34,7 +35,7 @@ export class AddComponent implements OnInit {
   public townControl = new FormControl(this.campaign.town, [ Validators.required ]);
   public radiusControl = new FormControl(this.campaign.radius, [ Validators.required ]);
 
-  constructor(private _service: CampaignDataService, private router: Router) {
+  constructor(private _service: CampaignDataService, private router: Router, private _mainComp: AppComponent,) {
   }
 
   ngOnInit(): void {
@@ -49,6 +50,7 @@ export class AddComponent implements OnInit {
     });
     this._service.getKeywords().subscribe(res => this.keywords = res);
     this._service.getTowns().subscribe(res => this.towns = res);
+    this._mainComp.getAccountBalance();
   }
 
   isFieldValid(field: string) {

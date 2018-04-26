@@ -3,6 +3,7 @@ import {CampaignDataService} from '../campaign-data.service';
 import {Observable} from "rxjs/Observable";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-list',
@@ -34,11 +35,12 @@ export class ListComponent implements OnInit {
   public townControl = new FormControl(this.campaign.town, [Validators.required]);
   public radiusControl = new FormControl(this.campaign.radius, [Validators.required]);
 
-  constructor(private _service: CampaignDataService, private router: Router) {
+  constructor(private _service: CampaignDataService, private _mainComp: AppComponent, private router: Router) {
   }
 
   ngOnInit() {
     this.getCampaigns();
+    this._mainComp.getAccountBalance();
     this.addForm = new FormGroup({
       'name': this.nameControl,
       'keywords': this.keywordsControl,
@@ -66,6 +68,7 @@ export class ListComponent implements OnInit {
       this._service.deleteCampaign(id).subscribe(
         res => {
           this.getCampaigns();
+          this._mainComp.getAccountBalance();
           alert("Deleted successfully!");
           return true;
         },
@@ -87,6 +90,7 @@ export class ListComponent implements OnInit {
         res => {
           alert("Saved successfully!");
           this.getCampaigns();
+          this._mainComp.getAccountBalance();
           return true;
         },
         error => {
