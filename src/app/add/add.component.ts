@@ -11,13 +11,12 @@ import {FormControl, FormGroup, FormsModule, Validators} from '@angular/forms';
 })
 export class AddComponent implements OnInit {
 
-  public towns = ["Krakow", "Rzeszow", "Wroclaw", "Katowice", "Radom"];
+  public towns;
+  public keywords;
 
   public campaign = {
     "name": "",
-    "keywords": [
-      ""
-    ],
+    "keywords": [],
     "bidAmount": "",
     "fund": "",
     "status": "",
@@ -47,7 +46,9 @@ export class AddComponent implements OnInit {
       "status": this.statusControl,
       "town": this.townControl,
       "radius": this.radiusControl
-    })
+    });
+    this._service.getKeywords().subscribe(res => this.keywords = res);
+    this._service.getTowns().subscribe(res => this.towns = res);
   }
 
   isFieldValid(field: string) {
@@ -63,7 +64,8 @@ export class AddComponent implements OnInit {
           return true;
         },
         error => {
-          console.error("Error while saving campaign!");
+          console.error(error);
+          alert(error.error[Object.keys(error.error)[0]]);
           return Observable.throw(error);
         }
       )

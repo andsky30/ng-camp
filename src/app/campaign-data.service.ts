@@ -30,6 +30,14 @@ export class CampaignDataService {
     return this.http.put('http://localhost:9000/api/campaigns', body, httpOptions)
   }
 
+  getKeywords(){
+    return this.http.get('http://localhost:9000/api/campaign_keywords');
+  }
+
+  getTowns(){
+    return this.http.get('http://localhost:9000/api/campaign_towns');
+  }
+
 
 
 

@@ -11,19 +11,19 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class ListComponent implements OnInit {
 
+  public keywords;
   public campaigns;
+  public towns;
+
   public campaign = {
     "name": "",
-    "keywords": [
-      ""
-    ],
+    "keywords": "",
     "bidAmount": "",
     "fund": "",
     "status": "",
     "town": "",
     "radius": ""
   };
-  public towns = ["Krakow", "Rzeszow", "Wroclaw", "Katowice", "Radom"];
 
   public addForm;
   public nameControl = new FormControl(this.campaign.name, [Validators.required]);
@@ -47,7 +47,9 @@ export class ListComponent implements OnInit {
       "status": this.statusControl,
       "town": this.townControl,
       "radius": this.radiusControl
-    })
+    });
+    this._service.getKeywords().subscribe(res => this.keywords = res);
+    this._service.getTowns().subscribe(res => this.towns = res);
   }
 
   getCampaigns() {
@@ -88,7 +90,9 @@ export class ListComponent implements OnInit {
           return true;
         },
         error => {
-          console.error("Error while saving campaign!");
+          console.error(error);
+          alert(error.error[Object.keys(error.error)[0]]);
+          this.getCampaigns();
           return Observable.throw(error);
         }
       )

@@ -4,6 +4,7 @@
 
   <form #addForm="ngForm">
 
+
     <label class="add_campaign_label">Name:</label>
     <input type="text" class="add_input" placeholder="Name"
            [(ngModel)]="campaign.name" name="name" required [formControl]="nameControl"/>
@@ -11,12 +12,16 @@
       <label>Name is required!</label>
     </div>
 
-    <label class="add_campaign_label">Keywords:</label>
-    <input type="text" class="add_input" placeholder="Keywords"
-           [(ngModel)]="campaign.keywords[0]" name="keywords[0]" required [formControl]="keywordsControl" />
+
+    <label class="add_campaign_label">Keywords (select with Ctrl):</label>
+    <select class="add_select add_select_keywords" [(ngModel)]="campaign.keywords" name="keywords" required [formControl]="keywordsControl"
+            multiple>
+      <option *ngFor="let keyword of keywords">{{keyword}}</option>
+    </select>
     <div *ngIf="isFieldValid('keywords')">
-    <label class="validation-div">Keywords is required!</label>
+      <label class="validation-div">Keywords is required!</label>
     </div>
+
 
     <label class="add_campaign_label">Bid amount:</label>
     <input type="number" class="add_input" placeholder="Bid amount"
@@ -25,6 +30,7 @@
       <label class="validation-div">Bid amount is required and must be a number!</label>
     </div>
 
+
     <label class="add_campaign_label">Fund:</label>
     <input type="number" class="add_input" placeholder="Fund" [(ngModel)]="campaign.fund" name="fund"
            required [formControl]="fundControl"/>
@@ -32,8 +38,9 @@
       <label class="validation-div">Fund is required and must be a number!</label>
     </div>
 
+
     <label class="add_campaign_label">Status:</label>
-    <select class="add_select" [(ngModel)]="campaign.status" name="status" required [formControl]="statusControl" >
+    <select class="add_select" [(ngModel)]="campaign.status" name="status" required [formControl]="statusControl">
       <option value="" disabled selected>Select status</option>
       <option>on</option>
       <option>off</option>
@@ -41,6 +48,7 @@
     <div *ngIf="isFieldValid('status')">
       <label class="validation-div">Status is required!</label>
     </div>
+
 
     <label class="add_campaign_label">Town:</label>
     <select class="add_select" [(ngModel)]="campaign.town" name="town" required [formControl]="townControl">
@@ -51,12 +59,14 @@
       <label class="validation-div">Town is required!</label>
     </div>
 
+
     <label class="add_campaign_label">Radius in km:</label>
     <input type="number" class="add_input" placeholder="Radius"
            [(ngModel)]="campaign.radius" name="radius" required [formControl]="radiusControl"/>
     <div *ngIf="isFieldValid('radius')">
       <label class="validation-div">Radius is required and must be a number!</label>
     </div>
+
 
     <input type="submit" class="add_btn" value="Add campaign" (click)="addCampaign(campaign)"/>
 

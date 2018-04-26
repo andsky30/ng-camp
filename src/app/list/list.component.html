@@ -7,7 +7,7 @@
       <th>FUND</th>
       <th>STATUS</th>
       <th>TOWN</th>
-      <th>RADIUS</th>
+      <th>RADIUS (km)</th>
     </thead>
     <tbody >
       <tr *ngFor="let campaign of campaigns; let even = even; let odd = odd" [ngClass]="{ odd: odd, even: even }">
@@ -26,28 +26,6 @@
 </div>
 <div class="edit_container" *ngIf="show">
   <h3>Edit campaign</h3>
-  <!--<form>-->
-  <!--<label class="add_campaign_label">Name:</label>-->
-  <!--<input type="text" class="add_input" placeholder="Name" [(ngModel)]="campaign.name" name="name"/>-->
-  <!--<label class="add_campaign_label">Keywords:</label>-->
-  <!--<input type="text" class="add_input" placeholder="Keywords" [(ngModel)]="campaign.keywords[0]" name="keywords[0]"/>-->
-  <!--<label class="add_campaign_label">Minimal bid amount:</label>-->
-  <!--<input type="text" class="add_input" placeholder="Min. bid amount" [(ngModel)]="campaign.bidAmount" name="bidAmount"/>-->
-  <!--<label class="add_campaign_label">Fund:</label>-->
-  <!--<input type="text" class="add_input" placeholder="Fund" [(ngModel)]="campaign.fund" name="fund"/>-->
-  <!--<label class="add_campaign_label">Status:</label>-->
-  <!--<select class="add_select" [(ngModel)]="campaign.status" name="status">-->
-  <!--<option>on</option>-->
-  <!--<option>off</option>-->
-  <!--</select>-->
-  <!--<label class="add_campaign_label">Town:</label>-->
-  <!--<select class="add_select" [(ngModel)]="campaign.town" name="town">-->
-  <!--<option *ngFor="let town of towns" [ngValue]="town">{{town}}</option>-->
-  <!--</select>-->
-  <!--<label class="add_campaign_label">Radius in km:</label>-->
-  <!--<input type="text" class="add_input" placeholder="Radius" [(ngModel)]="campaign.radius" name="radius"/>-->
-  <!---->
-  <!--</form>-->
 
   <form #addForm="ngForm">
 
@@ -59,8 +37,11 @@
     </div>
 
     <label class="add_campaign_label">Keywords:</label>
-    <input type="text" class="add_input" placeholder="Keywords"
-           [(ngModel)]="campaign.keywords[0]" name="keywords[0]" required [formControl]="keywordsControl" />
+    <select class="add_select add_select_keywords" [(ngModel)]="campaign.keywords"
+            name="keywords" required [formControl]="keywordsControl"
+            multiple>
+      <option *ngFor="let keyword of keywords">{{keyword}}</option>
+    </select>
     <div *ngIf="isFieldValid('keywords')">
       <label class="validation-div">Keywords is required!</label>
     </div>
