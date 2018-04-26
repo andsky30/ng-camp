@@ -27,16 +27,26 @@ export class AddComponent implements OnInit {
 
   public addForm;
 
-  public nameControl = new FormControl(this.campaign.name, [
-    Validators.required
-  ]);
+  public nameControl = new FormControl(this.campaign.name, [ Validators.required ]);
+  public keywordsControl = new FormControl(this.campaign.keywords, [ Validators.required ]);
+  public bidControl = new FormControl(this.campaign.bidAmount, [ Validators.required ]);
+  public fundControl = new FormControl(this.campaign.fund, [ Validators.required ]);
+  public statusControl = new FormControl(this.campaign.status, [ Validators.required ]);
+  public townControl = new FormControl(this.campaign.town, [ Validators.required ]);
+  public radiusControl = new FormControl(this.campaign.radius, [ Validators.required ]);
 
   constructor(private _service: CampaignDataService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.addForm = new FormGroup({
-      'name': this.nameControl
+      'name': this.nameControl,
+      'keywords': this.keywordsControl,
+      'bidAmount': this.bidControl,
+      "fund": this.fundControl,
+      "status": this.statusControl,
+      "town": this.townControl,
+      "radius": this.radiusControl
     })
   }
 

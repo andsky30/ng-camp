@@ -54,3 +54,10 @@
 {
   background-color: whitesmoke;
 }
+
+.validation-div
+{
+  display: block;
+  color: red;
+  margin-bottom: 15px;
+}
