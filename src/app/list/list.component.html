@@ -24,6 +24,7 @@
     </tbody>
   </table>
 </div>
+
 <div class="edit_container" *ngIf="show">
   <h3>Edit campaign</h3>
 
@@ -36,7 +37,8 @@
       <label>Name is required!</label>
     </div>
 
-    <label class="add_campaign_label">Keywords:</label>
+
+    <label class="add_campaign_label">Keywords (select with Ctrl):</label>
     <select class="add_select add_select_keywords" [(ngModel)]="campaign.keywords"
             name="keywords" required [formControl]="keywordsControl"
             multiple>
@@ -46,6 +48,7 @@
       <label class="validation-div">Keywords is required!</label>
     </div>
 
+
     <label class="add_campaign_label">Bid amount:</label>
     <input type="number" class="add_input" placeholder="Bid amount"
            [(ngModel)]="campaign.bidAmount" name="bidAmount" required [formControl]="bidControl"/>
@@ -53,12 +56,14 @@
       <label class="validation-div">Bid amount is required and must be a number!</label>
     </div>
 
+
     <label class="add_campaign_label">Fund:</label>
     <input type="number" class="add_input" placeholder="Fund" [(ngModel)]="campaign.fund" name="fund"
            required [formControl]="fundControl"/>
     <div *ngIf="isFieldValid('fund')">
       <label class="validation-div">Fund is required and must be a number!</label>
     </div>
+
 
     <label class="add_campaign_label">Status:</label>
     <select class="add_select" [(ngModel)]="campaign.status" name="status" required [formControl]="statusControl" >
@@ -70,6 +75,7 @@
       <label class="validation-div">Status is required!</label>
     </div>
 
+
     <label class="add_campaign_label">Town:</label>
     <select class="add_select" [(ngModel)]="campaign.town" name="town" required [formControl]="townControl">
       <option *ngFor="let town of towns" [ngValue]="town">{{town}}</option>
@@ -78,12 +84,14 @@
       <label class="validation-div">Town is required!</label>
     </div>
 
+
     <label class="add_campaign_label">Radius in km:</label>
     <input type="number" class="add_input" placeholder="Radius"
            [(ngModel)]="campaign.radius" name="radius" required [formControl]="radiusControl"/>
     <div *ngIf="isFieldValid('radius')">
       <label class="validation-div">Radius is required and must be a number!</label>
     </div>
+
 
     <input type="submit" class="add_btn" value="Save campaign" (click)="saveChanges()" (click)="show=false"/>
     <input type="submit" class="add_btn" value="Cancel" (click)="show=false" (click)="getCampaigns()"/>
